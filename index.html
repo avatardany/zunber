@@ -305,7 +305,7 @@ footer .creditos a{color:#b8c7d6}
     </div>
     <div class="hero-foto">
       <img src="fotos/lavado-tambor.jpg" alt="Técnico de ZUNBER lavando el tambor de una lavadora con hidrolavadora" fetchpriority="high">
-      <div class="hero-card">
+      <div class="hero-card" data-promo>
         <span class="ic promo-ic">10%</span>
         <span><b>10% de descuento</b><small>En el presupuesto de tu primera reparación</small></span>
       </div>
@@ -313,9 +313,9 @@ footer .creditos a{color:#b8c7d6}
   </div>
 </section>
 
-<div class="promo">
+<div class="promo" data-promo>
   <div class="wrap">
-    <div class="txt"><span class="pct">10%</span><div><b>Descuento en tu primera reparación</b><span class="det">Te descontamos el 10% del presupuesto la primera vez que nos contratas.</span></div></div>
+    <div class="txt"><span class="pct">10%</span><div><b>Descuento en tu primera reparación</b><span class="det">Te descontamos el 10% del presupuesto la primera vez que nos contratas. Promoción por tiempo limitado.</span></div></div>
     <a class="btn" href="https://wa.me/525549930925?text=Hola%20ZUNBER%2C%20quiero%20aprovechar%20el%2010%25%20de%20descuento%20en%20mi%20primera%20reparaci%C3%B3n" target="_blank" rel="noopener"><svg><use href="#i-wa"/></svg>Aprovechar descuento</a>
   </div>
 </div>
@@ -503,6 +503,11 @@ footer .creditos a{color:#b8c7d6}
 <a class="wa-flota" href="https://wa.me/525549930925?text=Hola%20ZUNBER%2C%20quiero%20agendar%20una%20revisi%C3%B3n" target="_blank" rel="noopener" aria-label="Escribir por WhatsApp"><svg><use href="#i-wa"/></svg></a>
 
 <script>
+// Promoción del 10%: se oculta sola a partir de esta fecha (AAAA-MM-DD). Para extenderla, cambia la fecha; para quitarla ya, pon una fecha pasada.
+const PROMO_HASTA = "2027-01-31";
+if (new Date() > new Date(PROMO_HASTA + "T23:59:59-06:00")) {
+  document.querySelectorAll("[data-promo]").forEach((el) => el.remove());
+}
 document.getElementById("anio").textContent = new Date().getFullYear();
 document.getElementById("form").addEventListener("submit", (e) => {
   e.preventDefault();
